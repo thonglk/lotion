@@ -1,0 +1,53 @@
+{
+  "expo": {
+    "name": "Fitlive",
+    "slug": "getfitlive",
+    "scheme": "fitlive",
+    "description": "All-in-one Solution for Fitness Club",
+    "privacy": "unlisted",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "1.1.9",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#5A45FF"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "packagerOpts":{
+   
+    "minify":false,
+
+    },
+    "ios": {
+      "bundleIdentifier": "com.joboasia.fitlivenew",
+      "supportsTablet": true,
+      "buildNumber": "1.1.9",
+      "googleServicesFile": "./GoogleService-Info.plist"
+
+    },
+    "android": {
+      "versionCode": 3,
+      "package": "com.joboasia.fitlivenew",
+      "permissions": []
+    },
+    "web": {
+      "config": {
+        "firebase": {
+    "appId": "1:307800118128:web:f71b0decd1a93fec1e75b5",
+    "apiKey": "AIzaSyBdxLQp5bspKC4g-VXYKXayeWGSnWbnhFY",
+    "measurementId": "G-R4P9BPMJY1"
+        }
+      }
+    },
+    "notification": {
+      "androidMode": "default"
+    }
+  }
+}
