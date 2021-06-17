@@ -1,4 +1,5 @@
 import React from 'react';
+import * as CustomCode from '../components.js';
 import {
   Button,
   Container,
@@ -7,6 +8,7 @@ import {
   withTheme,
 } from '@draftbit/ui';
 import {
+  ActivityIndicator,
   KeyboardAvoidingView,
   StyleSheet,
   Text,
@@ -30,7 +32,7 @@ const CreateSiteScreen = props => {
       if (result.error) throw new Error(result.error);
       setLoader(undefined);
 
-      alert(`Success! Your site at ${siteName}.lotion.one`);
+      setNotif(`Success! Your site at ${siteName}.lotion.one`);
     } catch (error) {
       setLoader(undefined);
 
@@ -41,9 +43,14 @@ const CreateSiteScreen = props => {
   const [notionUrl, setNotionUrl] = React.useState('');
   const [siteName, setSiteName] = React.useState('');
   const [loader, setLoader] = React.useState('');
+  const [notif, setNotif] = React.useState('');
 
   return (
-    <ScreenContainer scrollable={true} hasSafeArea={true}>
+    <ScreenContainer
+      style={styles.ScreenContainerlp}
+      scrollable={true}
+      hasSafeArea={true}
+    >
       <KeyboardAvoidingView
         style={styles.KeyboardAvoidingViewWs}
         enabled={true}
@@ -89,26 +96,60 @@ const CreateSiteScreen = props => {
           />
         </Container>
 
-        <Container elevation={0} useThemeGutterPadding={true}>
-          <Button
-            onPress={async () => {
-              try {
-                await create();
-              } catch (err) {
-                console.error(err);
-              }
-            }}
-            type="solid"
-            color={theme.colors.null}
-          >
-            {'Create'}
-          </Button>
+        <Container
+          style={styles.ContainerlH}
+          elevation={0}
+          useThemeGutterPadding={true}
+        >
+          <>
+            {loader ? null : (
+              <Button
+                onPress={async () => {
+                  try {
+                    await create();
+                  } catch (err) {
+                    console.error(err);
+                  }
+                }}
+                style={styles.ButtonVZ}
+                type="solid"
+                color={theme.colors.null}
+              >
+                {'Create'}
+              </Button>
+            )}
+          </>
+          <>
+            {!loader ? null : (
+              <ActivityIndicator
+                style={styles.ActivityIndicatorEQ}
+                size="small"
+                animating={true}
+                hidesWhenStopped={true}
+              />
+            )}
+          </>
+          <>
+            {!notif ? null : (
+              <Text style={[styles.TextJU, { color: theme.colors.primary }]}>
+                {'Your site is ready at '}
+                {siteName}
+                {'.lotion.one'}
+              </Text>
+            )}
+          </>
         </Container>
         <TextInput
           style={[styles.TextInputox, { borderColor: theme.colors.divider }]}
-          placeholder="Change my fieldname to email or password on the right side"
+          placeholder=""
           value={loader}
           onChangeText={loader => setLoader(loader)}
+        />
+        <TextInput
+          style={[styles.TextInput_6X, { borderColor: theme.colors.divider }]}
+          placeholder=""
+          value={notif}
+          onChangeText={notif => setNotif(notif)}
         />
       </KeyboardAvoidingView>
     </ScreenContainer>
@@ -127,6 +168,21 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
   },
+  ButtonVZ: {
+    width: 200,
+  },
+  ActivityIndicatorEQ: {
+    width: 36,
+    height: 36,
+  },
+  TextJU: {
+    fontSize: 20,
+    textTransform: 'uppercase',
+    paddingTop: 40,
+  },
+  ContainerlH: {
+    alignItems: 'center',
+  },
   TextInputox: {
     borderLeftWidth: 1,
     borderRightWidth: 1,
@@ -137,10 +193,28 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     paddingBottom: 8,
     borderRadius: 8,
+    opacity: 0,
+  },
+  TextInput_6X: {
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    paddingLeft: 8,
+    paddingRight: 8,
+    paddingTop: 8,
+    paddingBottom: 8,
+    borderRadius: 8,
+    opacity: 0,
   },
   KeyboardAvoidingViewWs: {
     justifyContent: 'space-around',
     flexGrow: 1,
+    width: '100%',
+    maxWidth: 600,
+  },
+  ScreenContainerlp: {
+    alignItems: 'center',
   },
 });
 

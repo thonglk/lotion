@@ -39,7 +39,7 @@ export default function RootAppNavigator() {
         <Stack.Screen
           name="CreateWebScreen"
           component={CreateWebScreen}
-          options={{ title: 'Create Site' }}
+          options={{ title: 'Lotion' }}
         />
         <Stack.Screen
           name="LoginWithEmailScreen"
