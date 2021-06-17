@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "Fitlive",
-    "slug": "getfitlive",
-    "scheme": "fitlive",
-    "description": "All-in-one Solution for Fitness Club",
+    "name": "Lotion",
+    "slug": "lotion",
+    "scheme": "lotion",
+    "description": "Create website from Notion",
     "privacy": "unlisted",
     "platforms": [
       "ios",

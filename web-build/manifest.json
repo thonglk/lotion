@@ -1,10 +1,10 @@
 {
   "background_color": "#5A45FF",
-  "description": "All-in-one Solution for Fitness Club",
+  "description": "Create website from Notion",
   "display": "standalone",
   "lang": "en",
-  "name": "Fitlive",
-  "short_name": "Fitlive",
+  "name": "Lotion",
+  "short_name": "Lotion",
   "start_url": "/?utm_source=web_app_manifest",
   "orientation": "portrait",
   "related_applications": [
