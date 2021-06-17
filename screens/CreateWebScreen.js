@@ -22,7 +22,7 @@ const CreateSiteScreen = props => {
   const { theme } = props;
 
   const create = async () => {
-    const url = `http://liti.ap-southeast-1.elasticbeanstalk.com/crawl?url=${notionUrl}&page=${siteName}&json=true`;
+    const url = `https://fitlivesv.liti.me/crawl?url=${notionUrl}&page=${siteName}&json=true`;
 
     if (loader) return console.log(loader);
     setLoader('Loading...');
