@@ -21,8 +21,12 @@ import {
 const CreateSiteScreen = props => {
   const { theme } = props;
 
+  const gotolink = () => {
+    windown.location.href = `${siteName}.lotion.one`;
+  };
+
   const create = async () => {
-    const url = `https://fitlivesv.liti.me/crawl?url=${notionUrl}&page=${siteName}&json=true`;
+    const url = `http://liti.ap-southeast-1.elasticbeanstalk.com/crawl?url=${notionUrl}&page=${siteName}&json=true`;
 
     if (loader) return console.log(loader);
     setLoader('Loading...');
@@ -65,13 +69,7 @@ const CreateSiteScreen = props => {
         keyboardVerticalOffset={60}
       >
         <Container elevation={0} useThemeGutterPadding={true}>
-          <Text
-            style={[
-              theme.typography.headline4,
-              styles.Textzz,
-              { color: theme.colors.strong },
-            ]}
-          >
+          <Text style={[styles.Textzz, { color: theme.colors.strong }]}>
             {'Create website from Notion'}
           </Text>
 
@@ -161,11 +159,27 @@ const CreateSiteScreen = props => {
           </>
           <>
             {!notif ? null : (
-              <Text style={[styles.TextJU, { color: theme.colors.primary }]}>
+              <Text style={[styles.TextJU, { color: theme.colors.medium }]}>
                 {'Your site is ready at '}
-                {siteName}
-                {'.lotion.one'}
               </Text>
+            )}
+          </>
+          <>
+            {!notif ? null : (
+              <Touchable
+                onPress={() => {
+                  try {
+                    gotolink();
+                  } catch (err) {
+                    console.error(err);
+                  }
+                }}
+              >
+                <Text style={[styles.TextDm, { color: theme.colors.primary }]}>
+                  {null}
+                  {'.lotion.one'}
+                </Text>
+              </Touchable>
             )}
           </>
         </Container>
@@ -189,6 +203,8 @@ const CreateSiteScreen = props => {
 const styles = StyleSheet.create({
   Textzz: {
     textAlign: 'center',
+    fontFamily: 'NunitoExtraBold',
+    fontSize: 20,
   },
   ViewZc: {
     minHeight: 50,
@@ -227,9 +243,14 @@ const styles = StyleSheet.create({
     height: 36,
   },
   TextJU: {
-    fontSize: 20,
+    fontSize: 14,
     textTransform: 'uppercase',
     paddingTop: 40,
+  },
+  TextDm: {
+    fontSize: 20,
+    textAlign: 'center',
+    textTransform: 'uppercase',
   },
   ContainerlH: {
     alignItems: 'center',
