@@ -5,14 +5,17 @@ import {
   Container,
   ScreenContainer,
   TextField,
+  Touchable,
   withTheme,
 } from '@draftbit/ui';
+import * as WebBrowser from 'expo-web-browser';
 import {
   ActivityIndicator,
   KeyboardAvoidingView,
   StyleSheet,
   Text,
   TextInput,
+  View,
 } from 'react-native';
 
 const CreateSiteScreen = props => {
@@ -45,6 +48,10 @@ const CreateSiteScreen = props => {
   const [loader, setLoader] = React.useState('');
   const [notif, setNotif] = React.useState('');
 
+  const onPress0xoah5JP = async () => {
+    await WebBrowser.openBrowserAsync('https://template.lotion.one');
+  };
+
   return (
     <ScreenContainer
       style={styles.ScreenContainerlp}
@@ -68,17 +75,25 @@ const CreateSiteScreen = props => {
             {'Create website from Notion'}
           </Text>
 
-          <Text
-            style={[
-              theme.typography.body1,
-              styles.TextPZ,
-              { color: theme.colors.strong },
-            ]}
-          >
-            {
-              'Custom domains, themes, automatic sync, and more—no code required.\n'
-            }
-          </Text>
+          <View style={styles.ViewZc} pointerEvents="auto">
+            <Touchable
+              onPress={async () => {
+                try {
+                  await onPress0xoah5JP();
+                } catch (err) {
+                  console.error(err);
+                }
+              }}
+            >
+              <Text style={{ color: theme.colors.primary }}>
+                {'Duplicate a template from here ↗'}
+              </Text>
+            </Touchable>
+
+            <Text style={{ color: theme.colors.strong }}>
+              {'to your Notion workspace.'}
+            </Text>
+          </View>
           <TextField
             style={styles.TextField_5O}
             placeholder=""
@@ -87,13 +102,28 @@ const CreateSiteScreen = props => {
             onChangeText={notionUrl => setNotionUrl(notionUrl)}
             label="Notion link"
           />
-          <TextField
-            placeholder=""
-            type="solid"
-            value={siteName}
-            onChangeText={siteName => setSiteName(siteName)}
-            label="Site Name"
-          />
+          <View
+            style={[
+              styles.ViewdE,
+              {
+                borderRadius: 6,
+                borderColor: theme.colors.divider,
+                backgroundColor: theme.colors.background,
+              },
+            ]}
+            pointerEvents="auto"
+          >
+            <TextInput
+              style={[
+                styles.TextInputsU,
+                { borderColor: theme.colors.divider },
+              ]}
+              placeholder="site-name"
+              value={siteName}
+              onChangeText={siteName => setSiteName(siteName)}
+            />
+            <Text style={{ color: theme.colors.strong }}>{'.lotion.one'}</Text>
+          </View>
         </Container>
 
         <Container
@@ -115,7 +145,7 @@ const CreateSiteScreen = props => {
                 type="solid"
                 color={theme.colors.null}
               >
-                {'Create'}
+                {'Create site'}
               </Button>
             )}
           </>
@@ -160,13 +190,34 @@ const styles = StyleSheet.create({
   Textzz: {
     textAlign: 'center',
   },
-  TextPZ: {
+  ViewZc: {
+    minHeight: 50,
+    alignItems: 'center',
     marginTop: 20,
-    textAlign: 'center',
   },
   TextField_5O: {
     marginTop: 20,
     marginBottom: 20,
+  },
+  TextInputsU: {
+    borderBottomWidth: 1,
+    paddingLeft: 8,
+    paddingRight: 8,
+    paddingTop: 8,
+    paddingBottom: 8,
+  },
+  ViewdE: {
+    minHeight: 50,
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    borderLeftWidth: 1,
+    borderTopWidth: 1,
+    borderRightWidth: 1,
+    borderBottomWidth: 1,
+    paddingLeft: 8,
+    paddingTop: 8,
+    paddingRight: 8,
+    paddingBottom: 8,
   },
   ButtonVZ: {
     width: 200,
