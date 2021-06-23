@@ -22,7 +22,7 @@ const CreateSiteScreen = props => {
   const { theme } = props;
 
   const gotolink = () => {
-    window.location.href = `${siteName}.lotion.one`;
+    window.location.href = `https://${siteName}.lotion.one`;
   };
 
   const create = async () => {
