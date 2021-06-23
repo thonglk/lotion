@@ -22,7 +22,7 @@ const CreateSiteScreen = props => {
   const { theme } = props;
 
   const gotolink = () => {
-    windown.location.href = `${siteName}.lotion.one`;
+    window.location.href = `${siteName}.lotion.one`;
   };
 
   const create = async () => {
@@ -176,7 +176,7 @@ const CreateSiteScreen = props => {
                 }}
               >
                 <Text style={[styles.TextDm, { color: theme.colors.primary }]}>
-                  {null}
+                  {siteName}
                   {'.lotion.one'}
                 </Text>
               </Touchable>
