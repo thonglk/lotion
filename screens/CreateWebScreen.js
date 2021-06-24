@@ -24,6 +24,7 @@ const CreateSiteScreen = props => {
   const gotolink = () => {
     window.location.href = `https://${siteName}.lotion.one`;
   };
+  
 
   const create = async () => {
     const url = `https://fitlivesv.liti.me/crawl?url=${notionUrl}&page=${siteName}&json=true`;
